@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180733097-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-180733097-1');
+</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frequency-Controlled Diffusion Model for Versatile Text-Guided Image-to-Image Translation</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  </head>
+
+  <style>
+  .section-title {
+    font-family: "Lato"
+  }
+  .authors {
+    font-family: "Lato";
+  }
+  h1, h2, h3, h4, h5, h6, p {
+    font-family: "Lato";
+  }
+  .pub-highlight {
+    color: #e83015;
+    font-family: monaco;
+  }
+  </style>
+  
+
+<!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 style="font-family: Lato;">Frequency-Controlled Diffusion Model for Versatile Text-Guided Image-to-Image Translation</h2->
+            <h4 style="color:#5a6268;">AAAI 2024</h4>
+            <!--<div class="pub-highlight">Ranks 1st on Sintel Optical Flow benchmark on Mar. 17th, 2022 </div>-->
+            <hr>
+            <h6> <a href="https://xianggao1102.github.io/FCDiffusion/" target="_blank">Xiang Gao</a>, &nbsp;&nbsp;&nbsp;
+                 Zhengbo Xu, &nbsp;&nbsp;&nbsp;
+                 Junhan Zhao, &nbsp;&nbsp;&nbsp;
+                 Jiaying Liu
+            	  <p>
+                    Wangxuan Institute of Computer Technology, Peking University <br>
+                    {gaoxiang1102, icey.x, liujiaying}@pku.edu.cn
+                </p>
+            <div class="row justify-content-center">
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://arxiv.org/pdf/2407.03006"  target="_blank">
+                    <i class="fa fa-file"></i>Paper</a> </p>
+              </div>
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://arxiv.org/pdf/2407.03006" role="button"  target="_blank">
+                    <i class="fa fa-file"></i>ArXiv</a> </p>
+              </div>
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/XiangGao1102/FCDiffusion_code" role="button"  target="_blank">
+                    <i class="fa fa-github-alt"></i>Code</a> </p>
+              </div>
+              <!-- <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/Eo9zn4x_xcZKmYHZNjzel7gBdWf_d4m-pISHhPWB-GZBYw?e=Hf4mz7" role="button">
+                    <i class="fa fa-database"></i> Data</a> </p>
+              </div> -->
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Abstract</h3>
+            <hr style="margin-top:0px">
+          <p class="text-justify">
+            Recently, large-scale text-to-image (T2I) diffusion models have emerged as a powerful tool for image-to-image translation (I2I), allowing open-domain image translation via user-provided text prompts. This paper proposes frequencycontrolled diffusion model (FCDiffusion), an end-to-end
+diffusion-based framework that contributes a novel solution to text-guided I2I from a frequency-domain perspective. At the heart of our framework is a feature-space frequencydomain filtering module based on Discrete Cosine Transform,
+which filters the latent features of the source image in the DCT domain, yielding filtered image features bearing different DCT spectral bands as different control signals to the pre-trained Latent Diffusion Model. We reveal that control
+signals of different DCT spectral bands bridge the source image and the T2I generated image in different correlations
+(e.g., style, structure, layout, contour, etc.), and thus enable versatile I2I applications emphasizing different I2I correlations, including style-guided content creation, image semantic manipulation, image scene translation, and image style translation. Different from related approaches, FCDiffusion
+establishes a unified text-guided I2I framework suitable for diverse image translation tasks simply by switching among different frequency control branches at inference time. The effectiveness and superiority of our method for text-guided I2I are demonstrated with extensive experiments both qualitatively and quantitatively. Our code is publicly available at: https://github.com/XiangGao1102/FCDiffusion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+ 
+  
+  
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Architecture</h3>
+            <hr style="margin-top:0px">
+                <img class="img-fluid" src="img/arch.jpg" alt="method architecture" width="90%">
+<p align="center">Overall architecture of FCDiffusion, as well as details of important model components.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  
+  
+   <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Key Ideas</h3>
+            <hr style="margin-top:0px">
+            <p class="text-justify">
+			<b>(1) Instruct image-to-image translation with natural language:</b><br>
+			Large-scale text-to-image diffusion models have revolutionized the field of image generation. We propose to harness their immense generative power and adapt them from text-to-image generation to the realm of text-guided image-to-image translation (I2I), providing intelligent tools for image manipulation tasks. <br><br>
+			<b>(2) Versatile image-to-image translation with a unified framework:</b> <br>
+			Observing that I2I has diverse application scenarios emphasizing different I2I correlations (e.g., style, structure, layout, contour, etc.) between the source image and the translated image, it is difficult for a single existing method to suit all scenarios well. This inspires us to design a unified framework enabling flexible control over diverse I2I correlations and thus applies to diverse I2I application scenarios. <br><br>
+			<b>(3) Realizing versatile I2I translation with different modes of frequency control:</b> <br>
+			We propose to realize versatile text-guided I2I translations from a novel frequency-domain perspective: model I2I correlation of different I2I tasks with the corresponding different frequency bands of diffusion features in the frequency domain. Specifically, we filter image features in the Discrete Cosine Transform (DCT) spectrum space and extract the filtered image features carrying a specific DCT frequency band as control signal to control the corresponding I2I correlation. Accordingly, we realize I2I application of style-guided content creation, image semantic manipulation, image scene translation, and image style translation under the mini-frequency control, low-frequency control, mid-frequency control, and high-frequency control, respectively. <br><br>    
+      <b>(4) Frequency spectrum reconstruction learning:</b><br>
+      Our FCDiffusion extracts image features carrying different DCT spectral bands as control signal to control the denoising process of the Latent Diffusion Model (LDM). Conditioned on the control signal, the model is trained to reconstruct the filtered-out frequency spectral components of image features with the textual information from the paired text prompt. At inference time, text-driven I2I translation is thus allowed by feeding in arbitrary text prompt to guide the completion of the filtered-out DCT spectral components.
+    </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  
+  
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Results</h3>
+            <hr style="margin-top:0px">
+            <p class="text-justify">Below are showcased example I2I translation results, including style-guided content creation realized by mini-frequency control; image semantic manipulation realized by low-frequency control; image style translation realized by high-frequency control; and image scene translation realized by mid-frequency control.</p>
+                <img class="img-fluid" src="img/style_guided_content_creation.jpg" alt="results for style-guided content creation" width="100%"><br><br><br><br><br><br>
+                <img class="img-fluid" src="img/image semantic manipulation.jpg" alt="results for image semantic manipulation" width="100%"><br><br><br><br><br><br>
+                <img class="img-fluid" src="img/image style translation.jpg" alt="results for image style translation" width="100%"><br><br><br><br><br><br>
+                <img class="img-fluid" src="img/image scene translation.jpg" alt="results for image scene translation" width="100%">
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  
